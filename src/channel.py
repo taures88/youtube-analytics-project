@@ -27,7 +27,7 @@ class Channel:
 
     def to_json(self, name_json: str):
         with open(name_json, 'w') as file:
-            json.dump(self.channel, file)
+            json.dump(self.channel, file, indent=4)
 
 
 
