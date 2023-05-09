@@ -4,10 +4,44 @@ import json
 
 api_key: str = 'AIzaSyB3JSCvV10iguNkmZwoe-Uornw8YwIzMvQ'
 
+
 class Channel:
     """Класс для ютуб-канала"""
 
+    """ выводим название_канала  ссылку_на_канал"""
 
+    def __str__(self):
+        return f"{self.title} ({self.url})"
+
+    """метод сложения"""
+
+    def __add__(self, other):
+        return self.subscriber_count + other.subscriber_count
+
+    """метод вычитания"""
+
+    def __sub__(self, other):
+        return self.subscriber_count - other.subscriber_count
+
+    """метод сравнения меньше"""
+
+    def __lt__(self, other):
+        return self.subscriber_count < other.subscriber_count
+
+    """метод сравнения меньше или равно"""
+
+    def __le__(self, other):
+        return self.subscriber_count <= other.subscriber_count
+
+    """метод сравнения больше"""
+
+    def __gt__(self, other):
+        return self.subscriber_count > other.subscriber_count
+
+    """метод сравнения больше или равно"""
+
+    def __ge__(self, other):
+        return self.subscriber_count >= other.subscriber_count
 
     def __init__(self, channel_id: str) -> None:
         self.channel_id = channel_id
@@ -27,8 +61,4 @@ class Channel:
 
     def to_json(self, name_json: str):
         with open(name_json, 'w') as file:
-            json.dump(self.channel, file)
-
-
-
-
+            json.dump(self.channel, file, indent=4)
